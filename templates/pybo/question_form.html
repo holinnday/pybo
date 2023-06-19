@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 {% extends 'base.html' %}
-
 {% block content %}
 <div class="container">
-  <h5 class="my-3 border-bottom pb-2">질문 등록</h5>
-  <form method="post" class="post-form my-3">
-    {% csrf_token %}
-     <!-- 오류표시 Start -->
+    <h5 class="my-3 border-bottom pb-2">질문등록</h5>
+    <form method="post" class="post-form my-3">
+        {% csrf_token %}
+        <!-- 오류표시 Start -->
         {% if form.errors %}
         <div class="alert alert-danger" role="alert">
             {% for field in form %}
@@ -26,13 +18,13 @@
         </div>
         {% endif %}
         <!-- 오류표시 End -->
-        <div class="form-group">
-            <label for="subject">제목</label>
+        <div class="mb-3">
+            <label for="subject" class="form-label">제목</label>
             <input type="text" class="form-control" name="subject" id="subject"
                    value="{{ form.subject.value|default_if_none:'' }}">
         </div>
-        <div class="form-group">
-            <label for="content">내용</label>
+        <div class="mb-3">
+            <label for="content" class="form-label">내용</label>
             <textarea class="form-control" name="content"
                       id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
         </div>
@@ -40,5 +32,3 @@
     </form>
 </div>
 {% endblock %}
-</body>
-</html>
